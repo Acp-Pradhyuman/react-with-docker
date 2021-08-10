@@ -1,0 +1,19 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Docker-dev
+    ports:
+      - '8080:3000'
+    volumes:
+      - /app/node_modules
+      - //d/Desktop/immense/Docker/react-app/front-end:/app
+  testing:
+    build:
+      context: .
+      dockerfile: Docker-dev
+    volumes:
+      - /app/node_modules
+      - //d/Desktop/immense/Docker/react-app/front-end:/app
+    command: ['npm', 'run', 'test']
